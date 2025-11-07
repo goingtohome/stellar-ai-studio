@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^5.0.0",
     "vite": "^5.0.0",
-    "patch-package": "^6.5.1"
+    "patch-package": "^6.5.1",
+    "@google/generative-ai": "^0.21.0"
   }
 }
