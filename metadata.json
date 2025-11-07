@@ -1,0 +1,5 @@
+{
+  "name": "Stellar AI Studio",
+  "description": "Generate images, videos, and audio using Gemini models. Edit images with text prompts. Video generation is a premium feature.",
+  "requestFramePermissions": []
+}
