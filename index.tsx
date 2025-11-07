@@ -4,7 +4,8 @@
  * Copyright 2025 Google LLC
  * SPDX-License-Identifier: Apache-2.0
  */
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import {GoogleGenAI, Modality} from '@google/genai';
+
 // Fix: Define and use AIStudio interface for window.aistudio to resolve type conflict.
 // Define the aistudio property on the window object for TypeScript
 declare global {
