@@ -729,5 +729,24 @@
     </template>
     
     <script type="module" src="index.tsx"></script>
+<!-- زر تسجيل الدخول -->
+<button id="googleLoginBtn" style="padding:10px 20px; font-size:16px; border:none; background-color:#4285F4; color:white; border-radius:5px; cursor:pointer;">
+  تسجيل الدخول باستخدام Google
+</button>
+
+<script>
+  const clientId = "اكتب هنا Client ID من Google Cloud";
+  const redirectUri = "https://stellar-ai-studio.vercel.app";
+  const authUrl =
+    `https://accounts.google.com/o/oauth2/v2/auth` +
+    `?client_id=${clientId}` +
+    `&redirect_uri=${redirectUri}` +
+    `&response_type=token` +
+    `&scope=email%20profile`;
+
+  document.getElementById("googleLoginBtn").addEventListener("click", () => {
+    window.location.href = authUrl;
+  });
+</script>
   </body>
 </html>
