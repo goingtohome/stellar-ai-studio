@@ -729,40 +729,5 @@
     </template>
     
     <script type="module" src="index.tsx"></script>
-<!-- زر تسجيل الدخول -->
-<button id="googleLoginBtn" style="padding:10px 20px; font-size:16px; border:none; background-color:#4285F4; color:white; border-radius:5px; cursor:pointer;">
-  تسجيل الدخول باستخدام Google
-</button>
-
-<script>
-  const clientId = "518583800607-bjqpmaeo3f6ggufjevue5h62iss93dng.apps.googleusercontent.com";
-  const redirectUri = "https://stellar-ai-studio.vercel.app";
-  const authUrl =
-    `https://accounts.google.com/o/oauth2/v2/auth` +
-    `?client_id=${clientId}` +
-    `&redirect_uri=${redirectUri}` +
-    `&response_type=token` +
-    `&scope=email%20profile`;
-
-  document.getElementById("googleLoginBtn").addEventListener("click", () => {
-    window.location.href = authUrl;
-  });
-</script>
-  // دالة باش نحصل على الـ access token بعد ما Google يرجع المستخدم
-  function handleGoogleRedirect() {
-    const params = new URLSearchParams(window.location.hash.substring(1));
-    const accessToken = params.get("access_token");
-
-    if (accessToken) {
-      document.body.innerHTML = `
-        <h2>✅ تم تسجيل الدخول بنجاح!</h2>
-        <p>رمز الوصول:</p>
-        <pre>${accessToken}</pre>
-      `;
-    }
-  }
-
-  handleGoogleRedirect();
-    </script>
   </body>
 </html>

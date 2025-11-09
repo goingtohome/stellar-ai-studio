@@ -9,8 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "^1.4.0",
-    "next-auth": "^4.24.5"
+    "@google/genai": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
