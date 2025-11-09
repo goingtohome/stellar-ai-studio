@@ -748,5 +748,21 @@
     window.location.href = authUrl;
   });
 </script>
+  // دالة باش نحصل على الـ access token بعد ما Google يرجع المستخدم
+  function handleGoogleRedirect() {
+    const params = new URLSearchParams(window.location.hash.substring(1));
+    const accessToken = params.get("access_token");
+
+    if (accessToken) {
+      document.body.innerHTML = `
+        <h2>✅ تم تسجيل الدخول بنجاح!</h2>
+        <p>رمز الوصول:</p>
+        <pre>${accessToken}</pre>
+      `;
+    }
+  }
+
+  handleGoogleRedirect();
+    </script>
   </body>
 </html>
