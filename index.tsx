@@ -930,7 +930,7 @@ async function initializeAI() {
     if (window.aistudio && !(await window.aistudio.hasSelectedApiKey())) {
         await openApiKeyDialog();
     }
-    ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+    ai = new GoogleGenAI({ apiKey: await getApiKeyFromStudio() || 'dev-key-placeholder' });
 }
 
 // --- View Management ---
