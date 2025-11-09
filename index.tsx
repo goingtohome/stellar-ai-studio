@@ -1306,7 +1306,8 @@ async function handleVideoGeneration() {
 
         if (operation.response?.generatedVideos?.[0]?.video?.uri) {
             const downloadLink = operation.response.generatedVideos[0].video.uri;
-            const videoResponse = await fetch(`${downloadLink}&key=${process.env.API_KEY}`);
+            const apiKey = await getApiKeyFromStudio() || 'dev-key-placeholder';
+const videoResponse = await fetch(`${downloadLink}&key=${apiKey}`);
             const videoBlob = await videoResponse.blob();
             const videoUrl = URL.createObjectURL(videoBlob);
             
