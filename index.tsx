@@ -923,7 +923,12 @@ function closeConfirmationModal() {
   confirmationModal.classList.add('hidden');
 }
 
-
+async function getApiKeyFromStudio(): Promise<string> {
+    if (window.aistudio?.getApiKey) {
+        return await window.aistudio.getApiKey();
+    }
+    return '';
+}
 // --- API / AI Functions ---
 async function initializeAI() {
     // For Veo model, we must use a user-selected API key.
