@@ -1501,21 +1501,25 @@ function handleGoogleSignIn(response: any) {
 }
 
 function initializeGoogleSignIn() {
-    if (window.google) {
-        window.google.accounts.id.initialize({
-            client_id: document.querySelector('meta[name="google-client-id"]')?.getAttribute('content'),
-            callback: handleGoogleSignIn,
-            auto_select: false,
-        });
-        window.google.accounts.id.renderButton(
-            googleSignInContainer,
-            { theme: "outline", size: "large", width: "300" } 
-        );
-    } else {
-        console.error("Google GSI client not loaded.");
+    // استبدل كود جوجل القديم برابط NextAuth البسيط
+    if (googleSignInContainer) {
+        googleSignInContainer.innerHTML = `
+            <a href="/api/auth/signin" class="google-signin-button" style="display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; max-width: 300px; padding: 12px 24px; background: white; border: 1px solid #dadce0; border-radius: 4px; color: #3c4043; font-size: 14px; font-weight: 500; cursor: pointer; transition: background-color 0.3s; text-decoration: none;">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" style="width: 18px; height: 18px;">
+                <span data-translate-key="auth-subtitle-google">Sign in with Google</span>
+            </a>
+        `;
+        
+        // أضف مستمع الحدث للزر الجديد
+        const googleButton = googleSignInContainer.querySelector('.google-signin-button');
+        if (googleButton) {
+            googleButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open('/api/auth/signin', '_blank');
+            });
+        }
     }
 }
-
 // --- Prompt Suggestions Logic ---
 async function showPromptSuggestionsModal() {
     promptSuggestionsContainer.innerHTML = '<div class="spinner w-8 h-8 mx-auto border-2 border-slate-300 dark:border-slate-600 border-t-sky-500 rounded-full animate-spin"></div>';
